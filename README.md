@@ -1,13 +1,45 @@
-# The Hitchhiker's Guide to grammY Plugins
+# Auto quote plugin for grammY
 
-grammY is very extensible and it supports installing plugins. This repository is a template for developing such plugins.
+This plugin provides a transformer for setting the `reply_to_message_id` param in every message your bot sends, and a middleware to install the transformer to every route, if you with to do so.
 
-⚠️ **For instructions on how to use this template please visit the [official docs](https://grammy.dev/plugins/guide.html).**
+## How does it work
 
-# Rules of Contribution
+This plugin works by setting `reply_to_message_id` param to the value of `ctx.msg.message_id` for every API method that starts with `send` (except for `sendChatAction`).
 
-Before diving into some hands-on examples, there are some notes to pay attention to if you would like your plugins to be submitted to the documentation:
+## Usage (for a single route)
 
-1. You should document your plugin (README with instructions).
-2. Explain the purpose of your plugin and how to use it by adding a page to the [docs](https://github.com/grammyjs/website).
-3. Choose a permissive license such as MIT or ISC.
+```ts
+import { Bot } from 'grammy'
+import { addReplyParam } from '@roziscoding/grammy-autoquote'
+
+const bot = new Bot('')
+
+bot.command('demo', async (ctx) => {
+  ctx.api.config.use(addReplyParam(ctx))
+
+  ctx.reply('Demo command!') // This will quote the user's message
+})
+
+bot.start()
+```
+
+## Usage (for every route)
+
+```ts
+import { Bot } from 'grammy'
+import { autoQuote } from '@roziscoding/grammy-autoquote'
+
+const bot = new Bot('')
+
+bot.use(autoQuote)
+
+bot.command('demo', async (ctx) => {
+  ctx.reply('Demo command!') // This will quote the user's message
+})
+
+bot.command('hello', async (ctx) => {
+  ctx.reply('Hi there :)') // Also quotes the user's message
+})
+
+bot.start()
+```

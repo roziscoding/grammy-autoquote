@@ -1,24 +1,27 @@
 {
-    "fmt": {
-        "options": {
-            "indentWidth": 4,
-            "proseWrap": "preserve"
-        },
-        "files": {
-            "exclude": [
-                "./node_modules/",
-                "./out/",
-                "./package-lock.json"
-            ]
-        }
+  "fmt": {
+    "options": {
+      "indentWidth": 4,
+      "proseWrap": "preserve"
     },
-    "lint": {
-        "files": {
-            "exclude": [
-                "./node_modules/",
-                "./out/",
-                "./package-lock.json"
-            ]
-        }
+    "files": {
+      "exclude": [
+        "./node_modules/",
+        "./out/",
+        "./package-lock.json"
+      ]
     }
+  },
+  "lint": {
+    "files": {
+      "exclude": [
+        "./node_modules/",
+        "./out/",
+        "./package-lock.json"
+      ]
+    }
+  },
+  "tasks": {
+    "build": "deno run --no-prompt --allow-read=. --allow-write=. https://deno.land/x/deno2node@v1.4.0/src/cli.ts tsconfig.json"
+  }
 }

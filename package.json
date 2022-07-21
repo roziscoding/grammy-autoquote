@@ -1,33 +1,34 @@
 {
-  "name": "@grammyjs/plugin-template",
+  "name": "@roziscoding/grammy-autoquote",
   "version": "1.0.0",
-  "description": "A Simple Pluging Template For grammY",
-  "homepage": "https://grammy.dev/plugins/MYPLUGIN",
-  "main": "./out/index.js",
+  "description": "grammY plugin that forces all sent messages to quote the last received one",
+  "homepage": "https://github.com/roziscoding/grammy-autoquote",
+  "main": "./out/mod.js",
   "type": "commonjs",
   "scripts": {
     "build": "deno2node tsconfig.json"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Amir-Zouerami/plugin-template.git"
+    "url": "git+https://github.com/roziscoding/grammy-autoquote.git"
   },
   "exports": {
-    ".": "./out/index.js"
+    ".": "./out/mod.js"
   },
   "files": [
     "out/"
   ],
-  "author": "Amir Zouerami",
+  "author": "Roz <roz@rjmunhoz.me>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Amir-Zouerami/plugin-template/issues"
+    "url": "https://github.com/roziscoding/grammy-autoquote/issues"
   },
   "peerDependencies": {
     "grammy": "^1.5.1"
   },
   "devDependencies": {
-    "deno2node": "~1.0.0"
+    "deno2node": "~1.0.0",
+    "prettier": "^2.7.1"
   },
   "keywords": [
     "grammY",

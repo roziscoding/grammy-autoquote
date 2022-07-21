@@ -1,9 +1,13 @@
 {
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-        "source.fixAll": true
-    },
-    "deno.enable": true,
-    "deno.lint": true,
-    "deno.config": "./deno.json",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "deno.enable": true,
+  "deno.lint": true,
+  "deno.config": "./deno.json",
+  "deno.unstable": true
 }

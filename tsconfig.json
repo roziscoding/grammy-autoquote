@@ -12,6 +12,7 @@
         "module": "commonjs",
         "outDir": "./out/",
         "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
         "target": "es2019"
     },
     "include": [
