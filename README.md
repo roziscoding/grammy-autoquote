@@ -11,6 +11,7 @@ This plugin works by setting `reply_to_message_id` param to the value of `ctx.ms
 ```ts
 import { Bot } from 'grammy'
 import { addReplyParam } from '@roziscoding/grammy-autoquote'
+// import { addReplyParam } from 'https://deno.land/x/grammy_autoquote/mod.ts'
 
 const bot = new Bot('')
 
@@ -28,6 +29,7 @@ bot.start()
 ```ts
 import { Bot } from 'grammy'
 import { autoQuote } from '@roziscoding/grammy-autoquote'
+// import { addReplyParam } from 'https://deno.land/x/grammy_autoquote/mod.ts'
 
 const bot = new Bot('')
 
