@@ -9,37 +9,37 @@ This plugin works by setting `reply_to_message_id` param to the value of `ctx.ms
 ## Usage (for a single route)
 
 ```ts
-import { Bot } from 'grammy'
-import { addReplyParam } from '@roziscoding/grammy-autoquote'
+import { Bot } from "grammy";
+import { addReplyParam } from "@roziscoding/grammy-autoquote";
 
-const bot = new Bot('')
+const bot = new Bot("");
 
-bot.command('demo', async (ctx) => {
-  ctx.api.config.use(addReplyParam(ctx))
+bot.command("demo", async (ctx) => {
+  ctx.api.config.use(addReplyParam(ctx));
 
-  ctx.reply('Demo command!') // This will quote the user's message
-})
+  ctx.reply("Demo command!"); // This will quote the user's message
+});
 
-bot.start()
+bot.start();
 ```
 
 ## Usage (for every route)
 
 ```ts
-import { Bot } from 'grammy'
-import { autoQuote } from '@roziscoding/grammy-autoquote'
+import { Bot } from "grammy";
+import { autoQuote } from "@roziscoding/grammy-autoquote";
 
-const bot = new Bot('')
+const bot = new Bot("");
 
-bot.use(autoQuote)
+bot.use(autoQuote);
 
-bot.command('demo', async (ctx) => {
-  ctx.reply('Demo command!') // This will quote the user's message
-})
+bot.command("demo", async (ctx) => {
+  ctx.reply("Demo command!"); // This will quote the user's message
+});
 
-bot.command('hello', async (ctx) => {
-  ctx.reply('Hi there :)') // Also quotes the user's message
-})
+bot.command("hello", async (ctx) => {
+  ctx.reply("Hi there :)"); // Also quotes the user's message
+});
 
-bot.start()
+bot.start();
 ```

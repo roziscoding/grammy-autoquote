@@ -1,7 +1,7 @@
 {
   "fmt": {
     "options": {
-      "indentWidth": 4,
+      "indentWidth": 2,
       "proseWrap": "preserve"
     },
     "files": {
@@ -19,9 +19,15 @@
         "./out/",
         "./package-lock.json"
       ]
+    },
+    "rules": {
+      "exclude": [
+        "no-explicit-any"
+      ]
     }
   },
   "tasks": {
-    "build": "deno run --no-prompt --allow-read=. --allow-write=. https://deno.land/x/deno2node@v1.4.0/src/cli.ts tsconfig.json"
+    "build": "rm -rf out && deno run --no-prompt --allow-read=. --allow-write=. https://deno.land/x/deno2node@v1.4.0/src/cli.ts tsconfig.json",
+    "prepare": "deno lint && deno fmt && deno check src/mod.ts"
   }
 }
