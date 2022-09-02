@@ -1,6 +1,6 @@
 {
   "name": "@roziscoding/grammy-autoquote",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "grammY plugin that forces all sent messages to quote the last received one",
   "homepage": "https://github.com/roziscoding/grammy-autoquote",
   "main": "./out/mod.js",
