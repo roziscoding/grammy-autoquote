@@ -34,7 +34,7 @@ export const addReplyParam = <C extends Context>(ctx: C) => {
   return transformer;
 };
 
-export const autoQuote: Middleware = (ctx, next) => {
+export const autoQuote: Middleware = async (ctx, next) => {
   ctx.api.config.use(addReplyParam(ctx));
-  next();
+  await next();
 };
