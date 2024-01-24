@@ -6,7 +6,17 @@ This plugin provides a transformer for setting the `reply_to_message_id` param i
 
 This plugin works by setting `reply_to_message_id` param to the value of `ctx.msg.message_id` for every API method that starts with `send` (except for `sendChatAction`).
 
-## Usage (for a single route)
+## Usage
+
+### Reply Parameters
+
+The plugin supports specifying the `allow_send_without_reply` parameter, which will allow the bot to send messages without quoting the user's message. To do so, just pass and object to the plugin initializer like so:
+
+```ts
+autoQuote({ allow_send_without_reply: true });
+```
+
+### For a single context
 
 ```ts
 import { Bot } from "grammy";
@@ -16,6 +26,7 @@ const bot = new Bot("");
 
 bot.command("demo", async (ctx) => {
   ctx.api.config.use(addReplyParam(ctx));
+  // ctx.api.config.use(addReplyParam(ctx, { allow_send_without_reply: true }));
 
   ctx.reply("Demo command!"); // This will quote the user's message
 });
@@ -23,7 +34,7 @@ bot.command("demo", async (ctx) => {
 bot.start();
 ```
 
-## Usage (for every route)
+### For every context
 
 ```ts
 import { Bot } from "grammy";
@@ -31,7 +42,8 @@ import { autoQuote } from "@roziscoding/grammy-autoquote";
 
 const bot = new Bot("");
 
-bot.use(autoQuote);
+bot.use(autoQuote());
+// bot.use(autoQuote({ allow_send_without_reply: true })
 
 bot.command("demo", async (ctx) => {
   ctx.reply("Demo command!"); // This will quote the user's message
