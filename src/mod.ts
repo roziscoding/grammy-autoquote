@@ -1,24 +1,22 @@
 import { Context, Middleware, Transformer } from "./deps.deno.ts";
 
-export const addReplyParam = <C extends Context>(ctx: C) => {
+export type AutoQuoteOptions = {
+  /**
+   * Mirror for the property described in the [documentation for ReplyParameters](https://core.telegram.org/bots/api#replyparameters)
+   */
+  allowSendingWithoutReply: boolean;
+};
+
+export const addReplyParam = <C extends Context>(
+  ctx: C,
+  options?: Partial<AutoQuoteOptions>,
+) => {
   const transformer: Transformer = (prev, method, payload, signal) => {
     if (
       // If we're not calling a "send" method
       !method.startsWith("send") ||
       // If we're calling "sendChatAction", which doesn't tak "reply_to_message_id"
-      method === "sendChatAction" ||
-      // If a reply to message id is already set
-      "reply_to_message_id" in payload
-    ) {
-      // Do nothing
-      return prev(method, payload, signal);
-    }
-
-    if (
-      // If the payload contains a chat_id
-      (payload as any).chat_id &&
-      // And it's different from the chat_id that initiated the interaction
-      (payload as any).chat_id !== ctx.msg?.chat.id
+      method === "sendChatAction"
     ) {
       // Do nothing
       return prev(method, payload, signal);
@@ -26,7 +24,16 @@ export const addReplyParam = <C extends Context>(ctx: C) => {
 
     return prev(
       method,
-      { ...payload, reply_to_message_id: ctx.msg?.message_id },
+      {
+        ...payload,
+        reply_parameters: {
+          ...(payload as any).reply_parameters,
+          message_id: (payload as any).reply_parameters?.message_id ??
+            ctx.msg?.message_id,
+          chat_id: (payload as any).reply_parameters?.chat_id ?? ctx.chat?.id,
+          allow_sending_without_reply: options?.allowSendingWithoutReply,
+        },
+      },
       signal,
     );
   };
@@ -34,7 +41,8 @@ export const addReplyParam = <C extends Context>(ctx: C) => {
   return transformer;
 };
 
-export const autoQuote: Middleware = async (ctx, next) => {
-  ctx.api.config.use(addReplyParam(ctx));
-  await next();
-};
+export const autoQuote =
+  (options?: Partial<AutoQuoteOptions>): Middleware => async (ctx, next) => {
+    ctx.api.config.use(addReplyParam(ctx, options));
+    await next();
+  };
