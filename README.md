@@ -1,6 +1,9 @@
 # Auto quote plugin for grammY
 
-This plugin provides a transformer for setting the `reply_to_message_id` param in every message your bot sends, and a middleware to install the transformer to every route, if you with to do so.
+[![JSR](https://jsr.io/badges/@roz/grammy-autoquote)](https://jsr.io/@roz/grammy-autoquote)
+[![JSR Score](https://jsr.io/badges/@roz/grammy-autoquote/score)](https://jsr.io/@roz/grammy-autoquote)
+
+This plugin provides a convenient way to quote the user's message when replying to them.
 
 ## How does it work
 
