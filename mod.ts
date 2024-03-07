@@ -47,14 +47,17 @@ export type AutoQuoteOptions = {
  * @param options - Optional configuration options.
  * @returns A transformer function.
  */
-export function addReplyParam<C extends Context>(ctx: C,
-  options?: Partial<AutoQuoteOptions>): Transformer {
+export function addReplyParam<C extends Context>(
+  ctx: C,
+  options?: Partial<AutoQuoteOptions>,
+): Transformer {
   const transformer: Transformer = (prev, method, payload, signal) => {
     if (
       // If we're not calling a "send" method
       !method.startsWith("send") ||
       // If we're calling "sendChatAction", which doesn't tak "reply_to_message_id"
-      method === "sendChatAction") {
+      method === "sendChatAction"
+    ) {
       // Do nothing
       return prev(method, payload, signal);
     }
@@ -71,7 +74,7 @@ export function addReplyParam<C extends Context>(ctx: C,
           allow_sending_without_reply: options?.allowSendingWithoutReply,
         },
       },
-      signal
+      signal,
     );
   };
 

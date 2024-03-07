@@ -9,11 +9,22 @@
   },
   "lint": {
     "rules": {
-      "exclude": ["no-explicit-any"]
+      "tags": ["recommended"],
+      "exclude": ["no-explicit-any"],
+      "include": [
+        "explicit-function-return-type",
+        "camelcase",
+        "default-param-last",
+        "eqeqeq",
+        "no-console",
+        "no-throw-literal",
+        "single-var-declarator",
+        "verbatim-module-syntax"
+      ]
     }
   },
   "tasks": {
-    "check": "deno lint && deno fmt && deno check src/mod.ts",
+    "check": "deno lint && deno fmt --check && deno check mod.ts && deno doc --lint mod.ts",
     "dnt": "deno run -A scripts/transform-node.ts"
   },
   "publish": {

@@ -1,3 +1,4 @@
+// deno-lint-ignore-file no-console
 import { build, emptyDir } from "https://deno.land/x/dnt@0.39.0/mod.ts";
 
 const version = Deno.args[0];
@@ -25,7 +26,8 @@ await build({
   package: {
     name: "@roziscoding/grammy-autoquote",
     version,
-    description: "Unnoficial grammY plugin that automatically quotes user messages",
+    description:
+      "Unnoficial grammY plugin that automatically quotes user messages",
     author: "Roz <roz@rjmunhoz.me>",
     license: "MIT",
     repository: {
@@ -36,8 +38,8 @@ await build({
       "grammy": "^1",
     },
   },
-  postBuild() {
+  postBuild(): void {
     Deno.copyFileSync("LICENSE", "dist/LICENSE");
     Deno.copyFileSync("README.md", "dist/README.md");
-  }
+  },
 });

@@ -13,7 +13,7 @@ This plugin works by setting `reply_to_message_id` param to the value of `ctx.ms
 Just import the plugin from `jsr`:
 
 ```ts
-import { autoQuote } from 'jsr:@roz/grammy-autoquote';
+import { autoQuote } from "jsr:@roz/grammy-autoquote";
 ```
 
 Or add an import map and import it directly
@@ -23,7 +23,7 @@ deno add @roz/grammy-autoquote
 ```
 
 ```ts
-import { autoQuote } from '@roz/grammy-autoquote';
+import { autoQuote } from "@roz/grammy-autoquote";
 ```
 
 ### Node.js
