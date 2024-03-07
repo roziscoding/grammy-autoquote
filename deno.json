@@ -1,7 +1,7 @@
 {
   "name": "@roz/grammy-autoquote",
   "description": "Unnoficial grammY plugin that automatically quotes user messages",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "exports": "./mod.ts",
   "lock": false,
   "fmt": {
