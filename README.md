@@ -9,49 +9,6 @@ This plugin provides a convenient way to quote the user's message when replying 
 
 This plugin works by setting `reply_to_message_id` param to the value of `ctx.msg.message_id` for every API method that starts with `send` (except for `sendChatAction`).
 
-## Installation
-
-### Deno
-
-Just import the plugin from `jsr`:
-
-```ts
-import { autoQuote } from "jsr:@roz/grammy-autoquote";
-```
-
-Or add an import map and import it directly
-
-```sh
-deno add @roz/grammy-autoquote
-```
-
-```ts
-import { autoQuote } from "@roz/grammy-autoquote";
-```
-
-### Node.js
-
-Add the plugin to your project
-
-- jsr (preferred)
-
-  ```sh
-  npx jsr add @roz/grammy-autoquote
-  ```
-
-- npm
-
-  ```sh
-  npm install @roziscoding/grammy-autoquote
-  ```
-
-Then import it in your code
-
-```ts
-import { autoQuote } from "@roz/grammy-autoquote"; // for jsr
-import { autoQuote } from "@roziscoding/grammy-autoquote"; // for npm
-```
-
 ## Usage
 
 ### Reply Parameters
