@@ -1,33 +1,22 @@
 {
+  "name": "@roz/grammy-autoquote",
+  "description": "Unnoficial grammY plugin that automatically quotes user messages",
+  "version": "2.0.2",
+  "exports": "./mod.ts",
   "fmt": {
-    "options": {
-      "indentWidth": 2,
-      "proseWrap": "preserve"
-    },
-    "files": {
-      "exclude": [
-        "./node_modules/",
-        "./out/",
-        "./package-lock.json"
-      ]
-    }
+    "indentWidth": 2,
+    "proseWrap": "preserve"
   },
   "lint": {
-    "files": {
-      "exclude": [
-        "./node_modules/",
-        "./out/",
-        "./package-lock.json"
-      ]
-    },
     "rules": {
-      "exclude": [
-        "no-explicit-any"
-      ]
+      "exclude": ["no-explicit-any"]
     }
   },
   "tasks": {
-    "build": "rm -rf out && deno run --no-prompt --allow-read=. --allow-write=. https://deno.land/x/deno2node@v1.4.0/src/cli.ts tsconfig.json",
-    "prepare": "deno lint && deno fmt && deno check src/mod.ts"
+    "check": "deno lint && deno fmt && deno check src/mod.ts",
+    "dnt": "deno run -A scripts/transform-node.ts"
+  },
+  "publish": {
+    "exclude": ["scripts", "usage.ts"]
   }
 }
