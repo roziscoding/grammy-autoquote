@@ -1,8 +1,5 @@
 # Auto quote plugin for grammY
 
-[![JSR](https://jsr.io/badges/@roz/grammy-autoquote)](https://jsr.io/@roz/grammy-autoquote)
-[![JSR Score](https://jsr.io/badges/@roz/grammy-autoquote/score)](https://jsr.io/@roz/grammy-autoquote)
-
 This plugin provides a convenient way to quote the user's message when replying to them.
 
 ## How does it work
