@@ -15,7 +15,5 @@
     "skipDefaultLibCheck": true,
     "target": "es2019"
   },
-  "include": [
-    "src/"
-  ]
+  "include": ["mod.ts"]
 }

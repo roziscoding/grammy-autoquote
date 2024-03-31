@@ -1,4 +1,4 @@
-import type { Context, Middleware, Transformer } from "npm:grammy@1";
+import type { Context, Middleware, Transformer } from "https://deno.land/x/grammy@v1.21.2/mod.ts";
 
 /**
  * Adds `reply_to_message_id` and `chat_id` to outgoing messages if not present, forcing the bot to quote the user's message whenever possible.
