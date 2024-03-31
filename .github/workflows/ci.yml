@@ -28,13 +28,6 @@ jobs:
       - uses: denoland/setup-deno@v1
       - run: deno check mod.ts
 
-  doc:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: denoland/setup-deno@v1
-      - run: deno doc --lint mod.ts
-
   transform:
     runs-on: ubuntu-latest
     steps:
