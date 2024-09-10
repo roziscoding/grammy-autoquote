@@ -69,14 +69,14 @@ export function addReplyParam<C extends Context>(
     return prev(
       method,
       {
-        ...payload,
         reply_parameters: {
-          ...(payload as any).reply_parameters,
           message_id: (payload as any).reply_parameters?.message_id ??
             ctx.msg?.message_id,
           chat_id: (payload as any).reply_parameters?.chat_id ?? ctx.chat?.id,
           allow_sending_without_reply: options?.allow_sending_without_reply,
+          ...(payload as any).reply_parameters,
         },
+        ...payload,
       },
       signal,
     );
