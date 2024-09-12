@@ -21,7 +21,7 @@ export type AutoQuoteOptions = {
   /**
    * Mirror for the property described in the [documentation for ReplyParameters](https://core.telegram.org/bots/api#replyparameters)
    */
-  allow_sending_without_reply: boolean;
+  allowSendingWithoutReply: boolean;
 };
 
 /**
@@ -73,7 +73,7 @@ export function addReplyParam<C extends Context>(
           message_id: (payload as any).reply_parameters?.message_id ??
             ctx.msg?.message_id,
           chat_id: (payload as any).reply_parameters?.chat_id ?? ctx.chat?.id,
-          allow_sending_without_reply: options?.allow_sending_without_reply,
+          allow_sending_without_reply: options?.allowSendingWithoutReply,
           ...(payload as any).reply_parameters,
         },
         ...payload,
