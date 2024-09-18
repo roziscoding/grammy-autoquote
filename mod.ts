@@ -8,7 +8,7 @@ import type {
  * Adds `reply_to_message_id` and `chat_id` to outgoing messages if not present, forcing the bot to quote the user's message whenever possible.
  *
  * ```ts
- * import { autoQuote } from "jsr:@roz/grammy-autoquote";
+ * import { autoQuote } from "@roz/grammy-autoquote";
  * ```
  *
  * @module
@@ -32,14 +32,14 @@ export type AutoQuoteOptions = {
  * @example
  * ```ts
  * import { Bot } from "grammy";
- * import { addReplyParam } from "jsr:@roz/grammy-autoquote";
+ * import { addReplyParam } from "@roz/grammy-autoquote";
  *
  * const bot = new Bot("");
  *
  * bot.command("demo", async (ctx) => {
  *   ctx.api.config.use(addReplyParam(ctx));
  *   // OR:
- *   // ctx.api.config.use(addReplyParam(ctx, { allow_send_without_reply: true }));
+ *   // ctx.api.config.use(addReplyParam(ctx, { allowSendingWithoutReply: true }));
  *
  *   ctx.reply("Demo command!"); // This will quote the user's message
  * });
@@ -59,7 +59,7 @@ export function addReplyParam<C extends Context>(
     if (
       // If we're not calling a "send" method
       !method.startsWith("send") ||
-      // If we're calling "sendChatAction", which doesn't tak "reply_to_message_id"
+      // If we're calling "sendChatAction", which doesn't take "reply_to_message_id"
       method === "sendChatAction"
     ) {
       // Do nothing
@@ -99,7 +99,7 @@ export function addReplyParam<C extends Context>(
  *
  *  bot.use(autoQuote());
  *  // OR:
- *  // bot.use(autoQuote({ allow_send_without_reply: true })
+ *  // bot.use(autoQuote({ allowSendingWithoutReply: true })
  *
  *  bot.command("demo", async (ctx) => {
  *    ctx.reply("Demo command!"); // This will quote the user's message
