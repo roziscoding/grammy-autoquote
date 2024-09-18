@@ -53,7 +53,7 @@ export type AutoQuoteOptions = {
  */
 export function addReplyParam<C extends Context>(
   ctx: C,
-  options?: Partial<AutoQuoteOptions>,
+  options?: AutoQuoteOptions,
 ): Transformer {
   const transformer: Transformer = (prev, method, payload, signal) => {
     if (
@@ -115,7 +115,7 @@ export function addReplyParam<C extends Context>(
  * @param options - Optional configuration options for autoQuote.
  * @returns A middleware function.
  */
-export function autoQuote(options?: Partial<AutoQuoteOptions>): Middleware {
+export function autoQuote(options?: AutoQuoteOptions): Middleware {
   return async (ctx, next) => {
     ctx.api.config.use(addReplyParam(ctx, options));
     await next();
