@@ -13,7 +13,7 @@ This plugin works by setting `reply_to_message_id` param to the value of `ctx.ms
 The plugin supports specifying the `allow_send_without_reply` parameter, which will allow the bot to send messages without quoting the user's message. To do so, just pass an object to the plugin initializer like so:
 
 ```ts
-autoQuote({ allow_send_without_reply: true });
+autoQuote({ allowSendingWithoutReply: true });
 ```
 
 ### For a single context
@@ -26,7 +26,7 @@ const bot = new Bot("");
 
 bot.command("demo", async (ctx) => {
   ctx.api.config.use(addReplyParam(ctx));
-  // ctx.api.config.use(addReplyParam(ctx, { allow_send_without_reply: true }));
+  // ctx.api.config.use(addReplyParam(ctx, { allowSendingWithoutReply: true }));
 
   ctx.reply("Demo command!"); // This will quote the user's message
 });
@@ -43,7 +43,7 @@ import { autoQuote } from "@roz/grammy-autoquote";
 const bot = new Bot("");
 
 bot.use(autoQuote());
-// bot.use(autoQuote({ allow_send_without_reply: true })
+// bot.use(autoQuote({ allowSendingWithoutReply: true }));
 
 bot.command("demo", async (ctx) => {
   ctx.reply("Demo command!"); // This will quote the user's message
