@@ -25,7 +25,7 @@ async function main(): Promise<void> {
     compilerOptions: { lib: ["ESNext"] },
     packageManager: "npm",
     mappings: {
-      "https://deno.land/x/grammy@v1.21.2/mod.ts": {
+      "https://lib.deno.dev/x/grammy@v1/mod.ts": {
         name: "grammy",
         version: "^1",
         peerDependency: true,
