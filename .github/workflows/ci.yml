@@ -39,5 +39,5 @@ jobs:
       - name: Transform
         run: deno task dnt 000.000.000 ./mod.ts
       - name: Preview
-        run: cd dist && npx pkg-pr-new publish --comment=update
+        run: cd dist && npx pkg-pr-new publish --comment=update --compact
 
