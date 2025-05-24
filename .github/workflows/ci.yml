@@ -28,7 +28,7 @@ jobs:
       - uses: denoland/setup-deno@v1
       - run: deno check mod.ts
 
-  transform:
+  preview:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -38,3 +38,6 @@ jobs:
           node-version: 20.x
       - name: Transform
         run: deno task dnt 000.000.000 ./mod.ts
+      - name: Preview
+        run: cd dist && npx pkg-pr-new publish --comment=update --compact
+

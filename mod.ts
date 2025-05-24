@@ -56,11 +56,16 @@ export function addReplyParam<C extends Context>(
   options?: AutoQuoteOptions,
 ): Transformer {
   const transformer: Transformer = (prev, method, payload, signal) => {
+    const messageId = ctx.msgId ??
+      (payload as any).reply_parameters?.message_id;
+
     if (
       // If we're not calling a "send" method
       !method.startsWith("send") ||
       // If we're calling "sendChatAction", which doesn't take "reply_to_message_id"
-      method === "sendChatAction"
+      method === "sendChatAction" ||
+      // If there's no message id
+      !messageId
     ) {
       // Do nothing
       return prev(method, payload, signal);
@@ -70,8 +75,7 @@ export function addReplyParam<C extends Context>(
       method,
       {
         reply_parameters: {
-          message_id: (payload as any).reply_parameters?.message_id ??
-            ctx.msg?.message_id,
+          message_id: messageId,
           chat_id: (payload as any).reply_parameters?.chat_id ?? ctx.chat?.id,
           allow_sending_without_reply: options?.allowSendingWithoutReply,
           ...(payload as any).reply_parameters,
